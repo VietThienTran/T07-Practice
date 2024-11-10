@@ -3,13 +3,17 @@
 **A. RESORT**
 
 ***_Giải thuật: Tổng tiền tố._***
+
 Ta cần lập bảng thống kê mỗi ngày có bao nhiêu người tới nghỉ. Hoạt động mang lại hiệu quả lớn nhất sẽ tổ chức vào ngày đông khách nhất, hiệu quả hoạt động cần bố trí giảm dần theo số lượng khách.
+
 Vì chỉ cần tổng hiệu quả nên ta có thể sắp xếp 2 mảng _(khách và hiệu quả)_ theo cùng một tiêu chí và tính tích vô hướng của 2 mảng.
+
 ***_Tổ chức dữ liệu:_***
 - Mảng int $a[100002]$ – lưu hiệu quả hoạt động,
 - Mảng int $b[100002]$ – lưu số lượng khách từng ngày.
 
 ***_Xử lý:_*** Đánh dấu ngày khách đến và ngày rời đi, từ đó tính tổng số lượng khách trong từng ngày theo quy tắc tích lũy tổng tiền tố
+
 ***_Độ phức tạp của giải thuật:_*** $O(nlogn)$.
 ```
 #include <iostream>
@@ -37,10 +41,17 @@ int main() {
 **B. POTTERY**
 
 ***_Giải thuật: Tìm kiếm nhị phân_***
+
 Gọi $x$ là thời gian hoạt động của phân xưởng nặn, $t – x$ là thời gian hoạt động của phân xưởng vẽ.
-Số sản phẩm phân xưởng nặn hoàn thành: $res1 = \sum\limits_{i=1}^n (\frac{x}{a_i})$
-Số sản phẩm phân xưởng vẽ hoàn thành: $res2 = \sum\limits_{i=1}^m (\frac{t-x}{b_i})$
+
+Số sản phẩm phân xưởng nặn hoàn thành: 
+$res1 = \sum\limits_{i=1}^n (\frac{x}{a_i})$
+
+Số sản phẩm phân xưởng vẽ hoàn thành: 
+$res2 = \sum\limits_{i=1}^m (\frac{t-x}{b_i})$
+
 Kết quả của bài toán là $res = min(res1, res2)$
+
 ***_Độ phức tạp của giải thuật:_*** $O(nlogn)$
 ```
 #include <iostream>
@@ -72,8 +83,10 @@ int main()
 ---
 **C. BALLOON**
 ***_Giải thuật: Tổ hợp_***
+
 Tính trước các giá trị tổ hợp $C_n^k$ cần thiết. Do $n$ không quá lớn nên ta sẽ sử dụng tam giác Pascal để tính trước các giá trị. Các kết quả lấy theo modulo $10^9+7$
 Với mỗi $i$ lần di chuyển, ta sẽ có ${C_{n-k+1}^{i}} * {C_{k-1}^{i-1}}$ cách sắp xếp
+
 ***_Độ phức tạp_***: $O(n^2)$
 ```
 #include <iostream> 
