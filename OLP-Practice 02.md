@@ -44,11 +44,9 @@ int main() {
 
 Gọi $x$ là thời gian hoạt động của phân xưởng nặn, $t – x$ là thời gian hoạt động của phân xưởng vẽ.
 
-Số sản phẩm phân xưởng nặn hoàn thành: 
-$res1 = \sum\limits_{i=1}^n (\frac{x}{a_i})$
+Số sản phẩm phân xưởng nặn hoàn thành: $res1 = \sum\limits_{i=1}^n {\frac{x}{a_i}}$
 
-Số sản phẩm phân xưởng vẽ hoàn thành: 
-$res2 = \sum\limits_{i=1}^m (\frac{t-x}{b_i})$
+Số sản phẩm phân xưởng vẽ hoàn thành: $res2 = \sum\limits_{i=1}^m \frac{t-x}{b_i}$
 
 Kết quả của bài toán là $res = min(res1, res2)$
 
@@ -82,6 +80,7 @@ int main()
 ```
 ---
 **C. BALLOON**
+
 ***_Giải thuật: Tổ hợp_***
 
 Tính trước các giá trị tổ hợp $C_n^k$ cần thiết. Do $n$ không quá lớn nên ta sẽ sử dụng tam giác Pascal để tính trước các giá trị. Các kết quả lấy theo modulo $10^9+7$
