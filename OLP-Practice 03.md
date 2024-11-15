@@ -14,11 +14,11 @@ Tuy nhiên, do giới hạn của $u, v$ khá lớn, khi dùng kiểu dữ liệ
 
 Bài này có một điểm cần lưu ý về xuất kết quả dạng thập phân. 
 
-Bài này không khó, nhưng nếu cài đặt không kỹ sẽ không thể ăn hết các test, dễ gây tâm lý ức chế, hoang mang cho thí sính. Đây cũng là điều các bạn cần chú ý khi thi.
+Bài này không khó, nhưng nếu cài đặt không kỹ sẽ không thể ăn hết các test, dễ gây tâm lý ức chế, hoang mang cho thí sính. Đây cũng là điều các bạn cần chú ý khi thi để tránh ảnh hưởng đến kết quả các bài sau.
 
 Mình có 2 cách trình bày cho bài này để các bạn tham khảo:
 
-Code 01: sử dụng kiểu dữ liệu *long double* và hàm ```fixed << setprecision()``` trong thư viện ```<iomanip> ```
+Cách 01: sử dụng kiểu dữ liệu *long double* và hàm ```fixed << setprecision()``` trong thư viện ```<iomanip> ```
 ```
 #include <iostream>
 #include <iomanip>
@@ -30,7 +30,7 @@ int main(){
     return 0;
 }
 ```
-Code 02: sử dụng kiểu dữ liệu *unsigned long long*
+Cách 02: sử dụng kiểu dữ liệu *unsigned long long*
 ```
 #include <iostream>
 using namespace std;
