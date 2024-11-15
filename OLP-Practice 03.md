@@ -44,3 +44,112 @@ int main()
 }
 ```
 
+**B. KHO BÁU**
+Mã nguồn tham khảo
+```
+#include <iostream>
+#include <algorithm>
+#include <set>
+using namespace std;
+int n, S, dem;
+int main() 
+{
+	cin>>n>>S;
+	int s=S*2;
+	set<pair<int,int> > checktree;
+	pair<int,int> tree[n];
+	for(int i=0;i<n;i++) {
+		cin>>tree[i].first>>tree[i].second;
+		checktree.insert(tree[i]);
+	}
+	sort(tree,tree+n);
+	for(int i=0;i<n;i++) 
+		for(int j=i+1;j<n;j++) 
+			if (tree[i].first==tree[j].first) {
+				int s1=abs(tree[i].second-tree[j].second);
+				if (s%s1==0) 
+                {
+					int s2=s/s1;
+					pair<int,int> o;
+					o.first=tree[i].first+s2;
+					o.second=tree[i].second;
+					if(checktree.find(o)!=checktree.end())  dem++;	
+					o.second=tree[j].second;
+					if(checktree.find(o)!=checktree.end())  dem++;
+					o.first=tree[i].first-s2;
+					if(checktree.find(o)!=checktree.end())  dem++;
+					o.second=tree[i].second;
+					if(checktree.find(o)!=checktree.end())  dem++;
+				}
+			}
+			else break;
+	cout<<dem;
+	return 0;
+}
+```
+
+**C. BỂ XĂNG**
+```
+#include <iostream>
+#include <algorithm>
+#include <stack>
+using namespace std;
+const int maxn = 1e5 + 5;
+int n, m, q, l, r, v[maxn], h[maxn], tmp;
+long long K, Vl[maxn], Vr[maxn], T[maxn];
+stack<int> st;
+int main () 
+{
+    ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+    cin >> n >> m;
+    v[n+1] = m,    h[0] = h[n+1] = 1e9;
+    for(int i=1;i<=n;i++)   cin>>v[i];
+    for(int i=1;i<=n;i++)   cin>>h[i];  
+    for(int i=1;i<=n;i++)   T[i]=T[i-1]+h[i];
+    st.push(0);
+    for(int i=1;i<=n;i++)  {
+        while (h[st.top()] < h[i]) st.pop();
+        tmp = st.top(), st.push(i);
+        Vl[i] = Vl[tmp] + (long long)(v[i] - v[tmp]) * h[i] - T[i] + T[tmp];
+    }
+    st = *new stack<int>;
+    st.push(n+1);
+    for(int i=n;i>0;i--) {
+        while (h[st.top()] < h[i]) st.pop();
+        tmp = st.top(), st.push(i);
+        Vr[n + 1 - i] = Vr[n + 1 - tmp] + (long long)(v[tmp] - v[i] - 1) * h[i] - T[tmp - 1] + T[i];
+    }
+    cin>>q;
+    while (q--) {
+        cin >> K;
+        l = lower_bound(Vl + 1, Vl + n + 1, K) - Vl - 1;
+        r = lower_bound(Vr + 1, Vr + n + 1, K) - Vr - 1;
+        cout << min(n, l + r) << '\n';
+    }
+    return 0;
+}
+```
+**D. XÂU ĐẸP**
+```
+#include <bits/stdc++.h>
+using namespace std;
+int n, q, l, r; 
+string s;
+bool c_c[1000002][30];
+int main() {
+    cin >> n >> q >> s;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=0;j<26;j++)   c_c[i][j] = c_c[i-1][j];
+        c_c[i][s[i-1]-'a'] = !c_c[i][s[i-1]-'a'];
+    }
+    while (q--) {
+        cin >> l >> r;
+        int count = 0;
+        for(int j=0;j<26;j++)
+            if(c_c[l][j] != c_c[r+1][j]) count++;
+        cout << count/2 << '\n';
+    }
+    return 0;
+}
+```
