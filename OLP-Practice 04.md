@@ -5,9 +5,13 @@
 
 **A. Nghệ thuật trừu tượng**
 
-***_Đang viết_***
+***_Giải thuật:_*** Duyệt tuần tự trên mảng 2 chiều.
 
-Đây là một bài ...
+Để đơn giản, ta sẽ tưởng tượng cách ta di chuyển và nhìn các ô cột. Mỗi ô cột có thể nhìn từ 4 phía/cạnh, tuy nhiên khi di chuyển ta chỉ có thể nhìn theo 2 hướng. Do đó, ta sẽ duyệt tuần tự theo chiều từ trên xuống dưới và từ trái qua phải, sau đó đi ngược lại từ dưới lên trên và từ phải qua trái.
+
+Điều kiện một ô có thể được nhìn thấy là chiều cao của nó không vượt quá chiều cao của các ô trong hàng/cột đã đi qua trước đó. Tại mỗi ô, ta cập nhật lại ô cao nhất mỗi cột/hàng sau khi duyệt ô đó. Nếu nhìn được ô đó thì đánh dấu lại.
+
+Sau khi đi 2 vòng, ta tiến hành ghi nhận lại các ô đã đánh dấu.
 ```
 #include <iostream>
 using namespace std;
@@ -17,19 +21,19 @@ int main()
     cin>>n>>m;
     for(int i=1;i<=n;i++)
         for(int j=1;j<=m;j++)   cin>>a[i][j];
-    for(int i=1;i<=n;i++)
-        for(int j=1;j<=m;j++)
+    for(int i=1;i<=n;i++)	// di tu tren xuong duoi
+        for(int j=1;j<=m;j++)	// di tu trai qua phai
         {
-            if (a[i][j]>ha[i] || a[i][j]>co[j])    cl[i][j]=1;
-            ha[i]=max(ha[i],a[i][j]);
+            if (a[i][j]>ha[i] || a[i][j]>co[j])    cl[i][j]=1;	// danh dau cac o nhin duoc
+            ha[i]=max(ha[i],a[i][j]);	
             co[j]=max(co[j],a[i][j]);
         }
-    for(int i=1;i<=n;i++) ha[i]=0; 
+    for(int i=1;i<=n;i++) ha[i]=0; // di xong nho khoi tao lai de di lai tu dau
     for(int j=1;j<=m;j++) co[j]=0;
     for(int i=n;i>0;i--)
         for(int j=m;j>0;j--)
         {
-            if (a[i][j]>ha[i] || a[i][j]>co[j])    cl[i][j]=1;
+            if (a[i][j]>ha[i] || a[i][j]>co[j])    cl[i][j]=1;	// danh dau cac o nhin duoc
             ha[i]=max(ha[i],a[i][j]);
             co[j]=max(co[j],a[i][j]);
         }
@@ -42,7 +46,12 @@ int main()
 ---
 
 **B. Cắt dán**
-Mã nguồn tham khảo
+
+***_Giải thuật:_*** tạm gọi là tham lam, vì cũng không biết gọi nó là gì.
+
+Ta nhận thấy khi 2 tứ giác lồi bằng nhau, dù có xoay ngang/dọc ra sao đi nữa thì khi sắp xếp lại độ dài các cạnh của 2 tứ giác theo chiều tăng/giảm dần, chúng sẽ tương ứng bằng nhau.
+
+Do đó, ta chỉ việc tính độ dài các cạnh của tứ giác ban đầu và sắp xếp tăng dần theo độ dài của chúng. Với mỗi tứ giác của học sinh, ta cũng thực hiện tính độ dài các cạnh của tứ giác ban đầu và sắp xếp tăng dần theo độ dài của chúng. Nếu tất cả các cạnh đều bằng nhau thì chứng tỏ 2 tứ giác bằng nhau ---> Ghi nhận kết quả
 ```
 #include <iostream>
 #include <algorithm>
@@ -74,7 +83,8 @@ int main()
 ```
 ---
 **C. Quà Noel**
-Writting...
+
+***_Giải thuật:_*** Duyệt đồ thị, tìm kiếm theo chiều rộng/sâu
 ```
 #include <iostream>
 #include <vector>
@@ -113,13 +123,19 @@ int main()
 ```
 ---
 **D. Cửa hàng năng lượng thông minh**
-Loading...
+
+***_Giải thuật:_*** Tìm kiếm nhị phân
+
+Ở đây anh dùng một mẹo để tìm ra giới hạn giá trị lũy thừa lớn nhất có thể của 2, 3 và 5 *(xem code để hiểu rõ)*
+Đầu tiên duyệt các viên pin, lọc lấy ***_các viên pin có mức năng lượng là số lý tưởng và phù hợp giới hạn._*** sau đó sắp xếp lại chúng.
+Ở mỗi truy vấn, ta chỉ việc tìm kiếm viên pin có mức năng lượng trong khoảng từ ```low``` đến ```high``` bằng giải thuật tìm kiếm nhị phân.
+Có thể sử dụng các hàm ```lower_bound()`` và ```upper_bound`` trong thư viện ```<algorithm>```
 ```
 #include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
-int n, m, p2=536870912, p3=387420489, p5=244140625;   // cac gia tri lon nhat co the 2^29, 3^18, 5^12
+int n, m, p2=536870912, p3=387420489, p5=244140625;   // cac gia tri lon nhat co the là 2^29, 3^18, 5^12
 vector<int> v;
 bool check(int x) 
 {
