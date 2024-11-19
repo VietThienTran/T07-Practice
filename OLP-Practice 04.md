@@ -1,4 +1,3 @@
-
 # Olympic Tin học sinh viên - T07 Practice 04
 ***Nguồn: OLP Tin học sinh viên Việt Nam năm 2022 - Bảng không chuyên***
 > Hướng dẫn này có thể khác so với hướng dẫn do BTC đưa ra.
@@ -127,7 +126,9 @@ int main()
 ***_Giải thuật:_*** Tìm kiếm nhị phân
 
 Ở đây anh dùng một mẹo để tìm ra giới hạn giá trị lũy thừa lớn nhất có thể của 2, 3 và 5 *(xem code để hiểu rõ)*
+
 Đầu tiên duyệt các viên pin, lọc lấy ***_các viên pin có mức năng lượng là số lý tưởng và phù hợp giới hạn._*** sau đó sắp xếp lại chúng.
+
 Ở mỗi truy vấn, ta chỉ việc tìm kiếm viên pin có mức năng lượng trong khoảng từ ```low``` đến ```high``` bằng giải thuật tìm kiếm nhị phân.
 Có thể sử dụng các hàm ```lower_bound()``` và ```upper_bound``` trong thư viện ```<algorithm>```
 ```
