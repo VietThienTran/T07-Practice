@@ -129,7 +129,7 @@ int main()
 Ở đây anh dùng một mẹo để tìm ra giới hạn giá trị lũy thừa lớn nhất có thể của 2, 3 và 5 *(xem code để hiểu rõ)*
 Đầu tiên duyệt các viên pin, lọc lấy ***_các viên pin có mức năng lượng là số lý tưởng và phù hợp giới hạn._*** sau đó sắp xếp lại chúng.
 Ở mỗi truy vấn, ta chỉ việc tìm kiếm viên pin có mức năng lượng trong khoảng từ ```low``` đến ```high``` bằng giải thuật tìm kiếm nhị phân.
-Có thể sử dụng các hàm ```lower_bound()`` và ```upper_bound`` trong thư viện ```<algorithm>```
+Có thể sử dụng các hàm ```lower_bound()``` và ```upper_bound``` trong thư viện ```<algorithm>```
 ```
 #include <iostream>
 #include <vector>
